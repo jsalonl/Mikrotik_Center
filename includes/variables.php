@@ -3,19 +3,20 @@
 /*
 Variables de Conexion Mikrotik
  */
-define('USER', 'APIRestWFC'); //Usuario Mikrotik --> Debe tener todos los permisos para en sistema para aprovisionar planes PPPoE
-define('PASS', 'WFC2015*!'); //Password Usuario --> Caracteres especiales para mayor complejidad
-define('IP_MIKROTIK', '181.48.138.242'); //IP Publica o Privada para establecer la conexion
+define('USER', 'tu_usuario'); //Usuario Mikrotik --> Debe tener todos los permisos para en sistema para aprovisionar planes PPPoE
+define('PASS', 'tu_password'); //Password Usuario --> Caracteres especiales para mayor complejidad
+define('IP_MIKROTIK', 'tu_ip'); //IP Publica o Privada para establecer la conexion
 
 /*
 Variables de Identidad
  */
-$Identidad_Mikrotik = "Mikrotik Villavicencio";
-$Marca_Licenciada = "WiFiColombia";
-$copyright = "Servicios Corporativos en Telecomunicaciones S.A.S. E.S.P. &copy; <br>".date('Y')." Todos los derechos reservados";
-$Autor = "Joan Salom&oacute;n Nieto L&oacute;pez";
+$Identidad_Mikrotik = "Mikrotik Villavicencio"; //nombre de tu mikrotik (para identificar)
+$Marca_Licenciada = "WiFiColombia"; //Tu nombre de marca
+$copyright = "Servicios Corporativos en Telecomunicaciones S.A.S. E.S.P. &copy; <br>".date('Y')." Todos los derechos reservados"; //tu copyright en caso de cambio
+$Autor = "Joan Salom&oacute;n Nieto L&oacute;pez"; // Autor
 /*
-Variables de Conexion MySQL
+Variables de Conexion MySQL por defecto
+Usuario de ingreso es 1121892890 y contraseña salonl
  */
 define('DB_HOST', 'localhost');
 define('DB_USER', 'usuariodb');
