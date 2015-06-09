@@ -68,7 +68,7 @@ include("layouts/menu.php");
                     <div class="row">
                        <div class="col-md-8">
                        <h2>Bienvenido <?=$nombre?></h2>
-                       <form action="action/busqueda_usuario.php" method="post" class="form-horizontal col-md-8">
+                       <form class="form-horizontal col-md-8" id="EnvioFormulario">
                         <div class="form-group">
                                         <label class="col-md-4 control-label">Nombre o NIT Usuario</label>
                                         <div class="col-md-8">
@@ -86,6 +86,13 @@ include("layouts/menu.php");
                             <!-- END WIDGET CLOCK -->
                             
                         </div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-md-6">
+	                    	<div id="ResultadoBusqueda">
+	                    		
+	                    	</div>
+                    	</div>
                     </div>
                     <!-- END WIDGETS -->                    
 
@@ -136,8 +143,6 @@ include("layouts/menu.php");
         
         <script type="text/javascript" src="js/plugins/morris/raphael-min.js"></script>
         <script type="text/javascript" src="js/plugins/morris/morris.min.js"></script>       
-        <script type="text/javascript" src="js/plugins/rickshaw/d3.v3.js"></script>
-        <script type="text/javascript" src="js/plugins/rickshaw/rickshaw.min.js"></script>
         <script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
         <script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>                
         <script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>                
@@ -150,9 +155,28 @@ include("layouts/menu.php");
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="js/plugins.js"></script>        
         <script type="text/javascript" src="js/actions.js"></script>
-        
-        <script type="text/javascript" src="js/demo_dashboard.js"></script>
         <!-- END TEMPLATE -->
+        	<script type="text/javascript">
+        	$(document).ready(function(){
+        		$("#EnvioFormulario").submit(function(){
+        			usuario=$("#Usuario").val();
+        			password=$("#Password").val();
+        			$.ajax({
+        				type: "POST",
+        				url: "action/buscar_cliente.php",
+        				data: $("#EnvioFormulario").serialize(),
+        				success: function(html){
+        					$("#ResultadoBusqueda").html(html);
+        				},
+        				beforeSend:function()
+        				{
+        					$("#ResultadoBusqueda").html('<i class="fa fa-spinner fa-spin"></i> Espere mientras se envian los datos')
+        				}
+                        });
+                         return false;
+                    });
+                });
+	</script>
     <!-- END SCRIPTS -->         
     </body>
 </html>
