@@ -24,13 +24,9 @@ if ($nivel_acceso=="1") {
 } elseif ($nivel_acceso=="3") {
 	$privilegio = "Comercial";
 } elseif ($nivel_acceso=="4") {
-	$privilegio = "Tecnico";
-} elseif ($nivel_acceso=="5") {
-	$privilegio = "Estructuras";
-} elseif ($nivel_acceso=="6") {
-	$privilegio = "Recaudos";
-} elseif ($nivel_acceso=="7") {
 	$privilegio = "SAC";
+} elseif ($nivel_acceso=="5") {
+	$privilegio = "Tecnico";
 }else{
 	$privilegio = "Tercerizados";
 }
@@ -43,13 +39,9 @@ $solo_comercial=($privilegio=="Comercial");
 //
 $solo_tecnico=($privilegio=="Tecnico");
 //
-$solo_estructuras=($privilegio=="Estructuras");
-//
-$solo_recuados=($privilegio=="Recaudos");
+$solo_SAC=($privilegio=="SAC");
 //
 $solo_tercerizados=($privilegio=="Tercerizados");
-//
-$solo_SAC=($privilegio=="SAC");
 //Cerramos la conexión con la Base de datos
 mysqli_close($conexiondb);
 ?>

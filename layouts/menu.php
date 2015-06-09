@@ -40,6 +40,9 @@
     $menu .=                    '<li class="xn-openable">';
     $menu .=                    '<a href="'.HOME_PATH.'salud">Salud</a>';
     $menu .=                    '</li>';
+    $menu .=                    '<li class="xn-openable">';
+    $menu .=                    '<a href="'.HOME_PATH.'buscar">Buscar En LOG</a>';
+    $menu .=                    '</li>';
     $menu .=                '</ul>';
     $menu .=            '</li>';
     $menu .=        '</ul>';
