@@ -79,6 +79,19 @@
     $menu .=                '</ul>';
     $menu .=            '</li>';
     $menu .=        '</ul>';
+    $menu .=       '<ul>';
+    $menu .=            '<li class="xn-openable">';
+    $menu .=            '<a href="'.HOME_PATH.'#">Editar Usuarios</a>';
+    $menu .=                '<ul>';
+    $menu .=                    '<li class="xn-openable">';
+    $menu .=                    '<a href="'.HOME_PATH.'editar/editar_usuario_queue">Editar Usuarios Queues</a>';
+    $menu .=                    '</li>';
+    $menu .=                    '<li class="xn-openable">';
+    $menu .=                    '<a href="'.HOME_PATH.'crear/crear_usuario_queue">Crear Cliente Queue</a>';
+    $menu .=                    '</li>';
+    $menu .=                '</ul>';
+    $menu .=            '</li>';
+    $menu .=        '</ul>';
     $menu .=     '</li>';
     } else {
     }

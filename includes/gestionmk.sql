@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2015 a las 07:06:56
+-- Tiempo de generación: 26-06-2015 a las 11:54:03
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -19,6 +19,21 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gestionmk`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mikrotiks`
+--
+
+CREATE TABLE IF NOT EXISTS `mikrotiks` (
+  `id_mkt` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_mkt` varchar(255) NOT NULL,
+  `ip_mkt` varchar(255) NOT NULL,
+  `user_mkt` varchar(255) NOT NULL,
+  `pass_mkt` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_mkt`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -42,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `Nombre`, `Identificacion`, `Password`, `Email`, `Telefono`, `Nivel_Acceso`) VALUES
-(1, 'Joan Salomon Nieto Lopez', '1121892890', '3b63b2f52303a359a34b3f2bba2877b1a200bda1', 'jnieto@wificolombia.net', '3112832742', '1');
+(1, 'Joan Salomon Nieto Lopez', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'jnieto@wificolombia.net', '1', '1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

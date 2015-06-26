@@ -71,6 +71,7 @@ $API->debug = false;
                     <div class="row">
                        <div class="col-md-8">
                        <h2>Bienvenido <?=$nombre?></h2>
+                       <h3>esta logueado en mkt <?=$nombre_mkt?></h3>
                         </div>
                         <div class="col-md-3">
                             <!-- START WIDGET CLOCK -->

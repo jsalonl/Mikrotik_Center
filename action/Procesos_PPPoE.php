@@ -1,16 +1,21 @@
-<?php 
+<?php
 session_start();
 if($_SESSION['Authenticated']!="1"){
 header('Location: index');
 }
+sleep(1);
 require("../../../includes/variables.php");
 require('../functions/funciones.php');
 include("../action/security.php");
+include("../layouts/menu.php");
 require('../apimikrotik.php');
+$API = new routeros_api();
+$API->debug = false;
 if ($API->connect(IP_MIKROTIK, USER, PASS)) {
     //Creacion Usuarios PPPoE Usermanager
     $customer = "admin";
     $name = $_POST['name'];
+    $phone = $_POST['no_id'];
     $user = strtolower($_POST['user']);
     $password = $_POST['password'];
     $plan = $_POST['plan'];
@@ -31,6 +36,7 @@ if ($API->connect(IP_MIKROTIK, USER, PASS)) {
             $API->write("=customer=".$customer,false);
             $API->write("=name=".$user,false);
             $API->write("=first-name=".$name,false);
+            $API->write("=phone=".$phone,false);
             $API->write("=comment="."Fecha activacion ".$fecha_activacion." - ".$comentarios,false);
             $API->write("=password=".$password,true);
             $READ = $API->read(false);
@@ -43,7 +49,7 @@ if ($API->connect(IP_MIKROTIK, USER, PASS)) {
                 $API->write("=customer=".$customer,false);
                 $API->write("=profile=".$plan,true);
                 $READ = $API->read(false);
-                echo "Usuario Creado y aprovisionado";
+                echo 1;
             } else {
                 echo "No se asigno plan";
             }

@@ -44,4 +44,14 @@ $solo_SAC=($privilegio=="SAC");
 $solo_tercerizados=($privilegio=="Tercerizados");
 //Cerramos la conexión con la Base de datos
 mysqli_close($conexiondb);
+
+$id_mkt = $_SESSION['id_mkt'];
+//Consultamos el ID de la sesion para que concuerde con los datos en la BD
+$conexiondbmkt = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_DB);
+$resultado=mysqli_query($conexiondbmkt,"SELECT * FROM mikrotiks WHERE id_mkt=".$id_mkt.";"); 
+$conteo=mysqli_num_rows($resultado);
+//ejecutamos la sentencia para traer los datos
+$ref=mysqli_fetch_array($resultado,MYSQLI_ASSOC);
+//asignamos las variables desde la BD
+$nombre_mkt = $ref['nombre_mkt']; 
 ?>

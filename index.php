@@ -1,5 +1,4 @@
 <?php
-$rol = "Comercial";
 include("../../includes/variables.php");
 ?>
 <!DOCTYPE html>
@@ -39,10 +38,24 @@ include("../../includes/variables.php");
                         </div>
                     </div>
                     <div class="form-group">
-                        <!--<div class="col-md-6">
-                            <a href="#" class="btn btn-link btn-block">Forgot your password?</a>
+                        <div class="col-md-12">
+                            <select name="mikrotik" id="mikrotik" class="form-control">
+                                <option value="">Mikrotik a Gestionar</option>
+                                <?php
+                                $conexionbase = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_DB);
+                                $consulta = "SELECT * FROM mikrotiks";
+                                $extraer = $conexionbase->query($consulta);
+                                while ($fila = $extraer->fetch_array())
+                                {
+                                    $id_mkt = $fila['id_mkt'];
+                                    $nombre_mkt = $fila['nombre_mkt'];
+                                    echo "<option value='$id_mkt'>".$nombre_mkt."</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
-                        -->
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-6">
                             <button type="submit" class="btn btn-info btn-block">Ingresar</button>
                         </div>
@@ -63,17 +76,18 @@ include("../../includes/variables.php");
             <!-- START PLUGINS -->
             <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
             <script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
-            <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>        
+            <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
             <!-- END PLUGINS --> 
             <script type="text/javascript">
                 $(document).ready(function(){
                    $("#Validacion").submit(function(){
                         usuario=$("#Usuario").val();
                         password=$("#Password").val();
+                        mikrotik=$("#mikrotik").val();
                          $.ajax({
                             type: "POST",
                             url: "action/control.php",
-                            data: "Usuario="+usuario+"&Password="+password,
+                            data: $("#Validacion").serialize(),
                             success: function(html){
                               if(html=='Autenticado')
                               {

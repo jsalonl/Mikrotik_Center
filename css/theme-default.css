@@ -7396,3 +7396,19 @@ top: 20px;
   .info_noty{
     font-size: 11px; line-height: 14px; text-align: left; padding: 8px 10px 9px; width: auto; position: relative;
   }
+
+  .select-definido{
+    height: 25px;
+  border-radius: 8px;
+  padding: 0px 0px 0px 15px;
+  width: 100%;
+  }
+#Info_Form{
+    text-align: center;
+  font-size: 20px;
+  color: #19A00A;
+  }
+.login-container .login-box .login-body select option{
+  color:#fff;
+  background: #666666;
+}

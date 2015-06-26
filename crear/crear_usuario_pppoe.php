@@ -212,17 +212,30 @@ $API->debug = false;
                        type: "POST",
                        url: '../action/Procesos_PPPoE.php',
                        data: $("#Crear_Cliente_Userman").serialize(), // Adjuntar los campos del formulario enviado.
-                       success: function(data)
-                       {
-                           alert(data); // Mostrar la respuestas del script PHP.
-                           $("#Crear_Cliente_Userman input").val("");
-                           $(".page-content-wrap").slideUp().delay(1000).slideDown();
-                       }
+                       success: function(data){
+                       if(data==1)
+                              {
+                                $("#Notificacion").addClass('success-noty').fadeIn();
+                                $(".noty_text").html("Cliente Creado");
+                                $("#Crear_Cliente_Queue input").val("");
+                                $(".page-content-wrap").slideUp().delay(1000).slideDown();
+                              }
+                              else
+                              {
+                              $("#Notificacion").addClass('error-noty').fadeIn();
+                              $(".noty_text").html(data);
+                              }
+                            }
                     });
                     return false;
                 });
             });
         </script>
     <!-- END SCRIPTS -->                   
+    <ul id="Notificacion">
+    <li>
+    <div>
+    <div class="info_noty">
+    <span class="noty_text"></span></div></li></ul>
     </body>
 </html>

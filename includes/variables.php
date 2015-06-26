@@ -1,26 +1,38 @@
 <?php
+/*
+Variables de Identidad
+ */
+$Identidad_Mikrotik = "Mikrotik Villavicencio";
+$Marca_Licenciada = "WiFiColombia";
+$copyright = "Servicios Corporativos en Telecomunicaciones S.A.S. E.S.P. &copy; <br>".date('Y')." Todos los derechos reservados";
+$Autor = "Joan Salom&oacute;n Nieto L&oacute;pez";
+
+/*
+Variables de Conexion MySQL
+ */
+define('DB_HOST', 'localhost');
+define('DB_USER', 'usuariodb');
+define('DB_PASS', '1121892890');
+define('DB_DB', 'gestionmk');
+$conexiondb = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_DB);
 
 /*
 Variables de Conexion Mikrotik
  */
-define('USER', 'tu_usuario'); //Usuario Mikrotik --> Debe tener todos los permisos para en sistema para aprovisionar planes PPPoE
-define('PASS', 'tu_password'); //Password Usuario --> Caracteres especiales para mayor complejidad
-define('IP_MIKROTIK', 'tu_ip'); //IP Publica o Privada para establecer la conexion
+$id_mkt = $_SESSION['id_mkt'];
 
-/*
-Variables de Identidad
- */
-$Identidad_Mikrotik = "Mikrotik Villavicencio"; //nombre de tu mikrotik (para identificar)
-$Marca_Licenciada = "WiFiColombia"; //Tu nombre de marca
-$copyright = "Servicios Corporativos en Telecomunicaciones S.A.S. E.S.P. &copy; <br>".date('Y')." Todos los derechos reservados"; //tu copyright en caso de cambio
-$Autor = "Joan Salom&oacute;n Nieto L&oacute;pez"; // Autor
-/*
-Variables de Conexion MySQL por defecto
-Usuario de ingreso es 1121892890 y contraseña salonl
- */
-define('DB_HOST', 'localhost');
-define('DB_USER', 'usuariodb');
-define('DB_PASS', '41325800');
-define('DB_DB', 'gestionmk');
-$conexiondb = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_DB);
+//Consultamos el ID de la sesion para que concuerde con los datos en la BD
+$conexiondbmkt = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_DB);
+$resultado=mysqli_query($conexiondbmkt,"SELECT * FROM mikrotiks WHERE id_mkt=".$id_mkt.";"); 
+$conteo=mysqli_num_rows($resultado);
+//ejecutamos la sentencia para traer los datos
+$ref=mysqli_fetch_array($resultado,MYSQLI_ASSOC);
+//asignamos las variables desde la BD
+$user_mkt = $ref['user_mkt'];
+$pass_mkt = $ref['pass_mkt'];
+$ip_mkt = $ref['ip_mkt'];
+//Definimos las variables de conexión de la consola mikrotik
+define('USER', $user_mkt);
+define('PASS', $pass_mkt);
+define('IP_MIKROTIK', $ip_mkt);
 ?>

@@ -1,9 +1,9 @@
 <?php
 session_start();
 if($_SESSION['Authenticated']!="1"){
-header('Location: index');
+header('Location: ../index');
 }
-require("../../../includes/variables.php");
+include("../../../includes/variables.php");
 require('../functions/funciones.php');
 include("../action/security.php");
 include("../layouts/menu.php");
@@ -71,11 +71,7 @@ $API->debug = false;
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                
-                    
-                    
                     <div class="row">
-                    <!-- empieza IF-->
                     <?php if ($API->connect(IP_MIKROTIK, USER, PASS)) { ;?>
                         <div class="col-md-12">
                             <!-- START DATATABLE EXPORT -->
@@ -225,11 +221,11 @@ $API->debug = false;
         
         <script type="text/javascript" src="../js/plugins/datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../js/plugins/tableexport/tableExport.js"></script>
-    <script type="text/javascript" src="../js/plugins/tableexport/jquery.base64.js"></script>
-    <script type="text/javascript" src="../js/plugins/tableexport/html2canvas.js"></script>
-    <script type="text/javascript" src="../js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
-    <script type="text/javascript" src="../js/plugins/tableexport/jspdf/jspdf.js"></script>
-    <script type="text/javascript" src="../js/plugins/tableexport/jspdf/libs/base64.js"></script>        
+        <script type="text/javascript" src="../js/plugins/tableexport/jquery.base64.js"></script>
+        <script type="text/javascript" src="../js/plugins/tableexport/html2canvas.js"></script>
+        <script type="text/javascript" src="../js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+        <script type="text/javascript" src="../js/plugins/tableexport/jspdf/jspdf.js"></script>
+        <script type="text/javascript" src="../js/plugins/tableexport/jspdf/libs/base64.js"></script>
         <!-- END THIS PAGE PLUGINS-->  
         
         <!-- START TEMPLATE -->
@@ -239,9 +235,3 @@ $API->debug = false;
     <!-- END SCRIPTS -->                 
     </body>
 </html>
-
-
-
-
-
-
